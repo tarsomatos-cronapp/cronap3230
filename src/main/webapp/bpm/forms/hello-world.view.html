@@ -1,0 +1,28 @@
+<div class="container">
+  <form role="form" class="form-horizontal" name="variablesForm">
+    <div class="component-holder ng-scope" data-component="crn-textinput" id="crn-textinput-1008379">
+      <div class="form-group">
+        <label for="inputLongVar">Name</label>
+        <input type="text" class="form-control" name="inputLongVar" cam-variable-type="String" cam-variable-name="nameVar" required="">
+      </div>
+    </div>
+    <div class="component-holder ng-scope" data-component="crn-textinput" id="crn-textinput-202664">
+      <div class="form-group">
+        <label for="customerNumber">Age</label>
+        <input type="number" class="form-control" name="customerNumber" cam-variable-type="Integer" cam-variable-name="ageVar" required="">
+      </div>
+    </div>
+    <div class="component-holder ng-scope" data-component="crn-enterprise-checkbox" id="crn-enterprise-checkbox-112291">
+      <div class="form-group">
+        <input type="checkbox" class="form-control k-checkbox" name="checkboxActive" cam-variable-type="Boolean" cam-variable-name="activeVar" required="">
+        <label class="k-checkbox-label" for="checkboxActive">Active</label>
+      </div>
+    </div>
+    <div class="component-holder ng-scope" data-component="crn-button" id="crn-button-215457">
+        <button class="btn btn-default k-button btn-block" ng-click="cronapi.server('blockly.Test.test').run()" xattr-fullsize="btn-block" xattr-theme="btn-default" xattr-disabled="">
+            <i class="glyphicon glyphicon-home"></i>
+            <span>Button </span>
+        </button>
+    </div>
+  </form>
+</div>

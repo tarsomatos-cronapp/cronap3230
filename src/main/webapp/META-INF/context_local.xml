@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><Context>
+    <Resource accessToUnderlyingConnectionAllowed="true" driverClassName="org.h2.Driver" logAbandoned="true" name="jdbc/main" password="root" profile="DEV" removeAbandoned="false" removeAbandonedTimeout="60" type="javax.sql.DataSource" url="jdbc:h2:file:~/temp/5c021887ae2d42ec972f7b984d5029ae;ALIAS_COLUMN_NAME=TRUE;AUTO_SERVER=TRUE" username="root"/>
+    <Profile value="DEV"/>
+    <Profile value="PROD"/>
+    <Resource accessToUnderlyingConnectionAllowed="false" cloudDatabaseKey="" driverClassName="org.h2.Driver" logAbandoned="true" name="jdbc/workflow" password="workflow" profile="DEV" removeAbandoned="false" removeAbandonedTimeout="60" schema="" type="javax.sql.DataSource" url="jdbc:h2:file:~/temp/workflow;AUTO_SERVER=TRUE;ALIAS_COLUMN_NAME=TRUE" username="workflow"/>
+</Context>

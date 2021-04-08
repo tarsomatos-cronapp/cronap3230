@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="definitions_19343bfc-c3c6-4fe4-a0b9-ad1dbd1589b7" targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <collaboration id="Collaboration_1jkl243">
+    <participant id="Participant_065i0qc" name="PROCESSO DE REEMBOLSO" processRef="process_df42fcdc-07ea-4057-88c8-40c5fb5be0ad" />
+  </collaboration>
+  <process id="process_df42fcdc-07ea-4057-88c8-40c5fb5be0ad" isExecutable="true">
+    <laneSet id="LaneSet_0xro0xb">
+      <lane id="Lane_1as0b00" name="FINANCEIRO">
+        <flowNodeRef>EndEvent_1q2o0mn</flowNodeRef>
+        <flowNodeRef>ExclusiveGateway_16ghu0b</flowNodeRef>
+        <flowNodeRef>Task_0u0e514</flowNodeRef>
+      </lane>
+      <lane id="Lane_0skikh1" name="RH">
+        <flowNodeRef>Task_0tu6nsn</flowNodeRef>
+        <flowNodeRef>EndEvent_1abvv24</flowNodeRef>
+        <flowNodeRef>Task_1i7fbnp</flowNodeRef>
+      </lane>
+      <lane id="Lane_0iceqwx" name="SOLICITANTE">
+        <flowNodeRef>StartEvent_18475e4</flowNodeRef>
+        <flowNodeRef>Task_1l3w4cn</flowNodeRef>
+        <flowNodeRef>Task_08zfl9u</flowNodeRef>
+      </lane>
+    </laneSet>
+    <startEvent id="StartEvent_18475e4">
+      <outgoing>SequenceFlow_1h5ndcm</outgoing>
+    </startEvent>
+    <userTask id="Task_1l3w4cn" name="REGISTRAR SOLICITACAO" camunda:formKey="embedded:app:bpm/forms/frame.view.html">
+      <incoming>SequenceFlow_1h5ndcm</incoming>
+      <outgoing>SequenceFlow_1vpu12a</outgoing>
+    </userTask>
+    <endEvent id="EndEvent_1q2o0mn">
+      <incoming>SequenceFlow_0kntmq0</incoming>
+    </endEvent>
+    <parallelGateway id="ExclusiveGateway_16ghu0b">
+      <incoming>SequenceFlow_09d6xvy</incoming>
+      <outgoing>SequenceFlow_0u3xqok</outgoing>
+      <outgoing>SequenceFlow_0kntmq0</outgoing>
+    </parallelGateway>
+    <userTask id="Task_0tu6nsn" name="DEPOSITAR VALOR">
+      <incoming>SequenceFlow_0u3xqok</incoming>
+      <outgoing>SequenceFlow_1ezi7p1</outgoing>
+    </userTask>
+    <endEvent id="EndEvent_1abvv24">
+      <incoming>SequenceFlow_1ezi7p1</incoming>
+    </endEvent>
+    <manualTask id="Task_08zfl9u" name="ENTREGAR COMPROV. AO RH">
+      <incoming>SequenceFlow_1vpu12a</incoming>
+      <outgoing>SequenceFlow_0bgb1ao</outgoing>
+    </manualTask>
+    <manualTask id="Task_1i7fbnp" name="ANEXAR COMPROV.">
+      <incoming>SequenceFlow_0bgb1ao</incoming>
+      <outgoing>SequenceFlow_0kz9orq</outgoing>
+    </manualTask>
+    <userTask id="Task_0u0e514" name="AVALIAR SOLICITACAO">
+      <incoming>SequenceFlow_0kz9orq</incoming>
+      <outgoing>SequenceFlow_09d6xvy</outgoing>
+    </userTask>
+    <sequenceFlow id="SequenceFlow_0kz9orq" sourceRef="Task_1i7fbnp" targetRef="Task_0u0e514" />
+    <sequenceFlow id="SequenceFlow_0bgb1ao" sourceRef="Task_08zfl9u" targetRef="Task_1i7fbnp" />
+    <sequenceFlow id="SequenceFlow_1ezi7p1" sourceRef="Task_0tu6nsn" targetRef="EndEvent_1abvv24" />
+    <sequenceFlow id="SequenceFlow_0kntmq0" name="REPROVADO" sourceRef="ExclusiveGateway_16ghu0b" targetRef="EndEvent_1q2o0mn" />
+    <sequenceFlow id="SequenceFlow_0u3xqok" name="APROVADO" sourceRef="ExclusiveGateway_16ghu0b" targetRef="Task_0tu6nsn" />
+    <sequenceFlow id="SequenceFlow_09d6xvy" sourceRef="Task_0u0e514" targetRef="ExclusiveGateway_16ghu0b" />
+    <sequenceFlow id="SequenceFlow_1vpu12a" sourceRef="Task_1l3w4cn" targetRef="Task_08zfl9u" />
+    <sequenceFlow id="SequenceFlow_1h5ndcm" sourceRef="StartEvent_18475e4" targetRef="Task_1l3w4cn" />
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_e5a89a7a-4962-468f-abaf-1dab5b466726">
+    <bpmndi:BPMNPlane id="BPMNPlane_2e250308-d29b-4c67-bc91-bbb60e91fdf0" bpmnElement="Collaboration_1jkl243">
+      <bpmndi:BPMNShape id="Participant_065i0qc_di" bpmnElement="Participant_065i0qc" isHorizontal="true">
+        <dc:Bounds x="340" y="-579" width="871" height="554" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1as0b00_di" bpmnElement="Lane_1as0b00" isHorizontal="true">
+        <dc:Bounds x="370" y="-215" width="841" height="190" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0skikh1_di" bpmnElement="Lane_0skikh1" isHorizontal="true">
+        <dc:Bounds x="370" y="-399" width="841" height="184" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0iceqwx_di" bpmnElement="Lane_0iceqwx" isHorizontal="true">
+        <dc:Bounds x="370" y="-579" width="841" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_18475e4_di" bpmnElement="StartEvent_18475e4">
+        <dc:Bounds x="418" y="-507" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1h5ndcm_di" bpmnElement="SequenceFlow_1h5ndcm">
+        <di:waypoint x="454" y="-489" />
+        <di:waypoint x="484" y="-489" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1vpu12a_di" bpmnElement="SequenceFlow_1vpu12a">
+        <di:waypoint x="584" y="-489" />
+        <di:waypoint x="654" y="-489" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0bgb1ao_di" bpmnElement="SequenceFlow_0bgb1ao">
+        <di:waypoint x="704" y="-449" />
+        <di:waypoint x="704" y="-339" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0kz9orq_di" bpmnElement="SequenceFlow_0kz9orq">
+        <di:waypoint x="704" y="-259" />
+        <di:waypoint x="704" y="-157" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_09d6xvy_di" bpmnElement="SequenceFlow_09d6xvy">
+        <di:waypoint x="754" y="-117" />
+        <di:waypoint x="883" y="-117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0u3xqok_di" bpmnElement="SequenceFlow_0u3xqok">
+        <di:waypoint x="908" y="-142" />
+        <di:waypoint x="908" y="-251" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="920" y="-193" width="62" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1q2o0mn_di" bpmnElement="EndEvent_1q2o0mn">
+        <dc:Bounds x="1057" y="-135" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0kntmq0_di" bpmnElement="SequenceFlow_0kntmq0">
+        <di:waypoint x="933" y="-117" />
+        <di:waypoint x="1057" y="-117" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="960" y="-135" width="70" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1abvv24_di" bpmnElement="EndEvent_1abvv24">
+        <dc:Bounds x="1057" y="-309" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ezi7p1_di" bpmnElement="SequenceFlow_1ezi7p1">
+        <di:waypoint x="958" y="-291" />
+        <di:waypoint x="1057" y="-291" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ParallelGateway_1pv0g3z_di" bpmnElement="ExclusiveGateway_16ghu0b">
+        <dc:Bounds x="883" y="-142" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1hywbz6_di" bpmnElement="Task_1l3w4cn">
+        <dc:Bounds x="484" y="-529" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ManualTask_1axim7o_di" bpmnElement="Task_08zfl9u">
+        <dc:Bounds x="654" y="-529" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ManualTask_0bil7ux_di" bpmnElement="Task_1i7fbnp">
+        <dc:Bounds x="654" y="-339" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_0f5amki_di" bpmnElement="Task_0u0e514">
+        <dc:Bounds x="654" y="-157" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1bqq4gf_di" bpmnElement="Task_0tu6nsn">
+        <dc:Bounds x="858" y="-331" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
